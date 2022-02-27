@@ -8,8 +8,11 @@ const theme = {
       accent: '#FF2F29',
       text: '#FFFFFF',
       gradient: `linear-gradient(to right, #FF2F29, #0A0910 )`,
-      gradient2: `linear-gradient(to bottom, #FF2F29, #0A0910 )`,
+      gradient2: `linear-gradient(to bottom, rgba(10, 9, 16, 0.9), rgba(10, 9, 16, 0.99) )`,
+      gradient3: `linear-gradient(to bottom, rgba(10, 9, 16, 0.3), rgba(10, 9, 16, 1) )`,
       neutral: '#11101c',
+      neutral2: '#11101c',
+      neutral3: 'rgba(255, 255, 255, 0.15)',
    },
 
    light: {
@@ -18,15 +21,20 @@ const theme = {
       accent: '#FF2F29',
       text: '#0A0910',
       gradient: `linear-gradient(to right, #FF2F29,#FFFFFF )`,
-      gradient2: `linear-gradient(to bottom, #FF2F29,#FFFFFF )`,
+      gradient2: `linear-gradient(to bottom, rgba(255,255,255, 0.9) ,rgba(255,255,255, 0.99) )`,
+      gradient3: `linear-gradient(to bottom, rgba(255,255,255, 0.3) ,rgba(255,255,255, 1) )`,
       neutral: '#EAEAEA',
+      neutral2: '#333',
+      neutral3: 'rgba(0, 0, 0, 0.15)',
    },
 };
 
 const variables = {
    fonts: {
-      primary: `'Comfortaa', cursive`,
-      secondary: `'Comfortaa', cursive`,
+      // primary: `'Comfortaa', cursive`,
+      // secondary: `'Comfortaa', cursive`,
+      primary: `'Alegreya', serif`,
+      secondary: `'Lato', sans-serif`,
    },
    weights: {
       normal: 400,
@@ -114,13 +122,37 @@ const GlobalStyle = createGlobalStyle`
    }
 
    img {
-     width: 100%;
+      width: 100%;
    }
    
    h1, h2, h3, h4, h5, h6 {
       font-family: ${variables.fonts.primary};
-      font-weight: ${variables.weights.bold};
+      font-weight: ${variables.weights.normal};
       margin-bottom: ${variables.sizes.normal};
+   }
+
+   h1 {
+         @media screen and (min-width:${breakpoints.desktop}px) {
+         font-size: ${variables.headings.xlarge}
+      }
+   }
+
+   h2 {
+         @media screen and (min-width:${breakpoints.desktop}px) {
+         font-size: ${variables.headings.large}
+      }
+   }
+
+   h3 {
+         @media screen and (min-width:${breakpoints.desktop}px) {
+         font-size: ${variables.headings.medium}
+      }
+   }
+
+   h4 {
+         @media screen and (min-width:${breakpoints.desktop}px) {
+         font-size: ${variables.headings.normal}
+      }
    }
    
    p {
@@ -135,7 +167,7 @@ const GlobalStyle = createGlobalStyle`
    ul {
       list-style:none;
    }
-
+   
    section {
       padding: 3rem 0;
       
@@ -143,15 +175,15 @@ const GlobalStyle = createGlobalStyle`
          padding: 5rem 0;
       }
    }
-
+   
    .btn {
       cursor: pointer;
       display: inline-block;
      font-family: ${variables.fonts.secondary};
-      font-weight: ${variables.weights.bold};
+     font-weight: ${variables.weights.normal};
       background: ${(props) => props.theme.accent}; 
       color: white; 
-      border-radius: ${variables.roundings.small};
+      border-radius: ${variables.roundings.medium};
       border: none;
       outline: none;
       transition: ${variables.misc.transitionEase};
@@ -160,18 +192,25 @@ const GlobalStyle = createGlobalStyle`
       &:hover {
          background: ${(props) => props.theme.text}; 
          color: ${(props) => props.theme.primary}; 
+         
+         
+      }
 
+      @media screen and (min-width:${breakpoints.desktop}px) {
+         padding: 1rem 2rem;
       }
    }
-
+   
    .small-btn {
       background: none;
       outline: none;
       border: none;
       cursor: pointer;
       font-size: 2rem;
-      /* color: ${variables.colors.secondary}; */
    }
+
+   
+   
 `;
 const ThemeContext = ({ children, darkMode }) => (
    <ThemeProvider theme={darkMode ? theme.dark : theme.light}>

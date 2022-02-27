@@ -59,7 +59,7 @@ const Header = styled.header`
    display: flex;
    align-items: center;
    height: ${dimensions.headerHeight.mobile};
-   border-bottom: 1px solid ${(props) => props.theme.neutral};
+   border-bottom: 1px solid ${(props) => props.theme.neutral3};
    z-index: 10;
 
    &.opened {
@@ -92,7 +92,17 @@ const Nav = styled.nav`
       gap: 3rem;
    }
 `;
-const Logo = styled.div``;
+const Logo = styled.div`
+   a {
+      font-family: ${variables.fonts.primary};
+   }
+
+   @media screen and (min-width: ${breakpoints.desktop}px) {
+      a {
+         font-size: 1.75rem;
+      }
+   }
+`;
 
 const Menu = styled.ul`
    position: fixed;

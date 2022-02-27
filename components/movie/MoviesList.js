@@ -16,7 +16,7 @@ import {
 } from '../../features/movies/moviesSlice';
 import { formatQuery } from '../../utils/helpers';
 
-const MoviesList = ({ data }) => {
+const MoviesList = ({ data, headingTitle }) => {
    const loading = useSelector(selectLoading);
    const error = useSelector(selectError);
    const query = useSelector(selectQuery);
@@ -25,7 +25,7 @@ const MoviesList = ({ data }) => {
       <MoviesRoot>
          <Container>
             <SectionTitle
-               title='Movies'
+               title={'Movies'}
                subtitle={formatQuery(query)}
                headingOne
             />

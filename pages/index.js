@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Loading } from '../components';
+import { Hero, MoviesHome } from '../components';
 
-export default function Home() {
+export default function Home({ upcomingMovies, popularMovies, popularShows }) {
    return (
       <div>
          <Head>
@@ -11,8 +11,38 @@ export default function Home() {
             <link rel='icon' href='/favicon.ico' />
          </Head>
 
-         <h1>Dev Movies</h1>
-         <Loading />
+         <Hero slides={upcomingMovies} />
+         <MoviesHome data={popularMovies} titleEnd='movies' />
+         <MoviesHome data={popularShows} titleEnd='shows' />
       </div>
    );
 }
+
+export const getStaticProps = async () => {
+   const response1 = fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&language=en-US&page=1`
+   ).then((res) => res.json());
+
+   const response2 = fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&language=en-US&page=1`
+   ).then((res) => res.json());
+
+   const response3 = fetch(
+      `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&language=en-US&page=1`
+   ).then((res) => res.json());
+
+   const [upcoming, movies, tv] = await Promise.all([
+      response1,
+      response2,
+      response3,
+   ]);
+
+   return {
+      props: {
+         upcomingMovies: upcoming.results.slice(0, 5),
+         popularMovies: movies.results.slice(0, 10),
+         popularShows: tv.results.slice(0, 10),
+         revalidate: 10,
+      },
+   };
+};

@@ -9,6 +9,7 @@ export default class MyDocument extends Document {
       try {
          ctx.renderPage = () =>
             originalRenderPage({
+               // eslint-disable-next-line
                enhanceApp: (App) => (props) =>
                   sheet.collectStyles(<App {...props} />),
             });
@@ -37,8 +38,12 @@ export default class MyDocument extends Document {
                   href='https://fonts.gstatic.com'
                   crossOrigin='true'
                />
-               <link
+               {/* <link
                   href='https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap'
+                  rel='stylesheet'
+               /> */}
+               <link
+                  href='https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,600&family=Lato&display=swap'
                   rel='stylesheet'
                />
             </Head>

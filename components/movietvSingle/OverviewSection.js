@@ -33,17 +33,23 @@ const OverviewSection = ({ movie }) => {
         }`;
 
    return (
-      <OverviewRoot
-         style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop_path})`,
-         }}
-      >
+      <OverviewRoot>
          <div className='mobile-img mobile'>
             <Image
                src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
                alt={title}
                height='250'
                width='450'
+               layout='responsive'
+            />
+         </div>
+
+         <div className='desktop-img desktop'>
+            <Image
+               src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+               alt={title ? title : name}
+               height={500}
+               width={1000}
                layout='responsive'
             />
          </div>
@@ -59,6 +65,7 @@ const OverviewSection = ({ movie }) => {
                      className='img'
                   />
                </div>
+
                <div>
                   <h1>
                      {title ? title : name} ({year})
@@ -104,6 +111,11 @@ const OverviewRoot = styled.section`
       z-index: 2;
    }
 
+   .mobile-img {
+      position: relative;
+      z-index: 2;
+   }
+
    .desktop {
       display: none;
    }
@@ -115,7 +127,6 @@ const OverviewRoot = styled.section`
       left: 0;
       width: 100%;
       height: 100%;
-      background: ${(props) => props.theme.primary};
    }
 
    @media screen and (min-width: ${breakpoints.desktop}px) {
@@ -131,8 +142,8 @@ const OverviewRoot = styled.section`
          left: 0;
          width: 100%;
          height: 100%;
-         background: ${(props) => props.theme.primary};
-         opacity: 0.925;
+         /* background: ${(props) => props.theme.primary}; */
+         background: ${(props) => props.theme.gradient2};
       }
 
       .mobile {
@@ -143,6 +154,14 @@ const OverviewRoot = styled.section`
          display: block;
          border-radius: ${variables.roundings.medium};
          overflow: hidden;
+      }
+
+      .desktop-img {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
       }
    }
 `;

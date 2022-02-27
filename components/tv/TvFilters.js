@@ -56,14 +56,19 @@ const TvFiltersRoot = styled.div`
 
    button {
       cursor: pointer;
-      font-family: ${variables.fonts.primary};
-      background: ${(props) => props.theme.neutral};
+      font-family: ${variables.fonts.secondary};
+      background: ${(props) => props.theme.neutral2};
       color: #fff;
       border: none;
       border-radius: ${variables.roundings.medium};
       outline: none;
       padding: 0.75rem 1rem;
       text-transform: capitalize;
+      transition: ${variables.misc.transitionEase};
+
+      &:hover {
+         background: ${(props) => props.theme.accent};
+      }
 
       &.active {
          background: ${(props) => props.theme.accent};

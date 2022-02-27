@@ -11,3 +11,7 @@ export const shuffleArray = (array) => {
 export const formatQuery = (input) => {
    return input.replace('_', ' ');
 };
+
+export const formatSlug = (input) => {
+   return input.replace(/\W+/g, '-').toLowerCase();
+};

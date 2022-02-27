@@ -43,9 +43,11 @@ export default Footer;
 const FooterRoot = styled.footer`
    padding: 1.5rem 0;
    border-top: 1px solid ${(props) => props.theme.neutral};
+   margin-top: 2rem;
 
    @media screen and (min-width: ${breakpoints.desktop}px) {
       padding: 2rem 0;
+      margin-top: 3rem;
    }
 `;
 

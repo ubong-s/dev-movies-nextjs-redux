@@ -8,15 +8,14 @@ import {
    CircularProgressbarWithChildren,
    buildStyles,
 } from 'react-circular-progressbar';
+import { formatSlug } from '../../utils/helpers';
 
 const needDominantBaselineFix = true;
 
 const MovieCard = ({ movie }) => {
    const { poster_path, title, name, id, vote_average } = movie;
 
-   const slug = title
-      ? title.replace(/\W+/g, '-').toLowerCase()
-      : name.replace(/\W+/g, '-').toLowerCase();
+   const slug = formatSlug(title ? title : name);
 
    return (
       <Link href={`/movies/${id}-${slug}`} passHref>

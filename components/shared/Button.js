@@ -1,15 +1,26 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import { breakpoints, variables } from '../../styles/globalStyle';
 
-const Button = ({ title = 'Click here', click }) => {
-   return <ButtonRoot onClick={click && click}>{title}</ButtonRoot>;
+const Button = ({ title = 'Click here', click, linkText }) => {
+   return (
+      <ButtonRoot onClick={click && click}>
+         {linkText ? (
+            <Link href={linkText}>
+               <a>{title}</a>
+            </Link>
+         ) : (
+            title
+         )}
+      </ButtonRoot>
+   );
 };
 
 export default Button;
 
 const ButtonRoot = styled.button`
    cursor: pointer;
-   font-family: ${variables.fonts.primary};
+   font-family: ${variables.fonts.secondary};
    background: ${(props) => props.theme.accent};
    color: #fff;
    border: none;
@@ -17,8 +28,14 @@ const ButtonRoot = styled.button`
    outline: none;
    padding: 0.75rem 1rem;
    text-transform: capitalize;
+   transform: ${variables.misc.transitionEase};
+
+   &:hover {
+      opacity: 0.9;
+   }
 
    @media screen and (min-width: ${breakpoints.desktop}px) {
       padding: 1rem 2rem;
+      font-size: 1.15rem;
    }
 `;

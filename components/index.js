@@ -16,15 +16,19 @@ import Loading from './shared/Loading';
 import Pagination from './shared/Pagination';
 import SectionTitle from './shared/SectionTitle';
 import Stars from './shared/Stars';
+import Hero from './home/Hero';
+import MoviesHome from './home/MoviesHome';
 
 export {
    Layout,
+   Hero,
    MovieCard,
    MoviesList,
    MovieFilters,
    TvCard,
    TvList,
    TvFilters,
+   MoviesHome,
    SimilarSection,
    Button,
    Container,
