@@ -1,0 +1,37 @@
+{
+   "name": "dev-hotel-next",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+   },
+   "dependencies": {
+      "@redux-devtools/extension": "^3.1.0",
+      "@reduxjs/toolkit": "^1.7.2",
+      "axios": "^0.25.0",
+      "framer-motion": "^6.2.3",
+      "graphql": "14.x || 15.x",
+      "graphql-request": "^3.5.0",
+      "next": "11.1.2",
+      "react": "17.0.2",
+      "react-circular-progressbar": "^2.0.4",
+      "react-datocms": "^1.6.3",
+      "react-dom": "17.0.2",
+      "react-icons": "^4.2.0",
+      "react-redux": "^7.2.6",
+      "react-scroll": "^1.8.4",
+      "redux": "^4.1.2",
+      "redux-thunk": "^2.4.1",
+      "styled-components": "^5.3.3"
+   },
+   "peerDependencies": {
+      "graphql": "14.x || 15.x"
+   },
+   "devDependencies": {
+      "eslint": "7.32.0",
+      "eslint-config-next": "11.1.2"
+   }
+}
