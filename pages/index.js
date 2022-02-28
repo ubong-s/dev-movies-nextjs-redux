@@ -46,6 +46,5 @@ export const getServerSideProps = async () => {
          movies,
          tv,
       },
-      revalidate: 10,
    };
 };
