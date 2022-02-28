@@ -62,7 +62,7 @@ const TvFiltersRoot = styled.div`
       border: none;
       border-radius: ${variables.roundings.medium};
       outline: none;
-      padding: 0.75rem 1rem;
+      padding: 0.75rem;
       text-transform: capitalize;
       transition: ${variables.misc.transitionEase};
 

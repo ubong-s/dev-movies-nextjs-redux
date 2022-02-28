@@ -51,6 +51,7 @@ export default MoviesFilters;
 
 const MoviesFiltersRoot = styled.div`
    display: flex;
+   /* flex-wrap: wrap; */
    gap: 1rem;
    margin-bottom: 2rem;
 
@@ -62,7 +63,7 @@ const MoviesFiltersRoot = styled.div`
       border: none;
       border-radius: ${variables.roundings.medium};
       outline: none;
-      padding: 0.75rem 1rem;
+      padding: 0.75rem;
       text-transform: capitalize;
       transition: ${variables.misc.transitionEase};
 
