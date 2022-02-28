@@ -16,7 +16,7 @@ const SectionTitle = ({ title, headingOne, subtitle }) => {
 export default SectionTitle;
 
 const TitleRoot = styled.div`
-   padding: 3rem 0;
+   padding: 2rem 0;
    text-transform: capitalize;
 `;
 
