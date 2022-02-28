@@ -7,7 +7,7 @@ import {
    AiOutlineArrowLeft,
 } from 'react-icons/ai';
 import styled from 'styled-components';
-import { breakpoints, variables } from '../../styles/globalStyle';
+import { breakpoints, variables, dimensions } from '../../styles/globalStyle';
 import { Button } from '..';
 import { formatSlug } from '../../utils/helpers';
 
@@ -129,7 +129,7 @@ export default Hero;
 const HeroSlider = styled.section`
    padding: 0;
    position: relative;
-   height: 100vh;
+   height: calc(100vh - ${dimensions.headerHeight.mobile});
    overflow: hidden;
 
    @media screen and (min-width: ${breakpoints.tablet}px) {

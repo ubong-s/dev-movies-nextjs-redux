@@ -1,8 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Hero, MoviesHome } from '../components';
 
-export default function Home({ upcomingMovies, popularMovies, popularShows }) {
+export default function Home({ upcoming, movies, tv }) {
+   const upcomingMovies = upcoming?.results.slice(0, 5);
+   const popularMovies = movies?.results.slice(0, 10);
+   const popularShows = tv?.results.slice(0, 10);
    return (
       <div>
          <Head>
@@ -39,9 +41,9 @@ export const getStaticProps = async () => {
 
    return {
       props: {
-         upcomingMovies: upcoming.results.slice(0, 5),
-         popularMovies: movies.results.slice(0, 10),
-         popularShows: tv.results.slice(0, 10),
+         upcoming,
+         movies,
+         tv,
          revalidate: 10,
       },
    };
