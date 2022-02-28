@@ -21,20 +21,19 @@ const Tv = () => {
    const query = useSelector(selectQuery);
    const [page, setPage] = useState(1);
 
-   const fetchShows = (query = 'popular', page = 1) => {
+   const fetchShows = async (query = 'popular', page = 1) => {
       dispatch(fetchShowsStart());
-      axios
-         .get(
+      try {
+         const response = await fetch(
             `https://api.themoviedb.org/3/tv/${query}?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&language=en-US&page=${page}`
-         )
-         .then((response) => {
-            const results = response.data;
-            dispatch(fetchShowsSuccess(results));
-         })
-         .catch((error) => {
-            const errorMsg = `Error fetching ${query} shows`;
-            dispatch(error);
-         });
+         );
+
+         const result = await response.json();
+         dispatch(fetchShowsSuccess(result));
+      } catch (error) {
+         const errorMsg = `Error fetching ${query} shows`;
+         dispatch(fetchShowsError(error.message));
+      }
    };
 
    useEffect(() => {
