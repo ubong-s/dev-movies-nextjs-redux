@@ -44,7 +44,7 @@ export const getStaticProps = async () => {
          upcoming,
          movies,
          tv,
-         revalidate: 10,
       },
+      revalidate: 10,
    };
 };
