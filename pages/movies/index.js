@@ -30,7 +30,7 @@ const Movies = () => {
          })
          .catch((error) => {
             const errorMsg = `Error fetching ${query} movies`;
-            dispatch(fetchMoviesError(errorMsg));
+            dispatch(error.message);
          });
    };
 

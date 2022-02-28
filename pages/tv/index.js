@@ -33,7 +33,7 @@ const Tv = () => {
          })
          .catch((error) => {
             const errorMsg = `Error fetching ${query} shows`;
-            dispatch(fetchShowsError(errorMsg));
+            dispatch(error.message);
          });
    };
 
