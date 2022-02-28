@@ -9,7 +9,7 @@ export const shuffleArray = (array) => {
 };
 
 export const formatQuery = (input) => {
-   return input.replace('_', ' ');
+   return input.replace(/_/g, ' ');
 };
 
 export const formatSlug = (input) => {

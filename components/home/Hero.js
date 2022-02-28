@@ -43,7 +43,6 @@ const Hero = ({ slides = [] }) => {
       return null;
    }
 
-   console.log(Array.from(Array(length).keys()));
    return (
       <HeroSlider>
          <SliderIcons>

@@ -5,6 +5,7 @@ export default function Home({ upcoming, movies, tv }) {
    const upcomingMovies = upcoming?.results?.slice(0, 5);
    const popularMovies = movies?.results?.slice(0, 10);
    const popularShows = tv?.results?.slice(0, 10);
+
    return (
       <div>
          <Head>
@@ -20,7 +21,7 @@ export default function Home({ upcoming, movies, tv }) {
    );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
    const response1 = fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&language=en-US&page=1`
    ).then((res) => res.json());
