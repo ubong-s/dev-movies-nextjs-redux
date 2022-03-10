@@ -15,8 +15,8 @@ export default function Home({ upcoming, movies, tv }) {
          </Head>
 
          <Hero slides={upcomingMovies} />
-         <MoviesHome data={popularMovies} titleEnd='movies' />
-         <MoviesHome data={popularShows} titleEnd='shows' />
+         <MoviesHome data={popularMovies} titleEnd='movies' slugPre='movies' />
+         <MoviesHome data={popularShows} titleEnd='shows' slugPre='tv' />
       </div>
    );
 }

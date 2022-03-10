@@ -12,13 +12,13 @@ import { formatSlug } from '../../utils/helpers';
 
 const needDominantBaselineFix = true;
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, slugPre }) => {
    const { poster_path, title, name, id, vote_average } = movie;
 
    const slug = formatSlug(title ? title : name);
 
    return (
-      <Link href={`/movies/${id}-${slug}`} passHref>
+      <Link href={`/${slugPre}/${id}-${slug}`} passHref>
          <MovieCardRoot>
             <div className='image'>
                <Image

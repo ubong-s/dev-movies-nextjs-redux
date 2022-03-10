@@ -39,7 +39,7 @@ const MoviesList = ({ data, headingTitle }) => {
             ) : (
                <MoviesGrid>
                   {data.map((movie) => (
-                     <MovieCard key={movie.id} movie={movie} />
+                     <MovieCard key={movie.id} movie={movie} slugPre='movies'/>
                   ))}
                </MoviesGrid>
             )}

@@ -6,7 +6,7 @@ import { updateQuery as updateMovieQuery } from '../../features/movies/moviesSli
 import { updateQuery as updateTvQuery } from '../../features/tv/tvSlice';
 import { breakpoints } from '../../styles/globalStyle';
 
-const MoviesHome = ({ data, titleEnd }) => {
+const MoviesHome = ({ data, titleEnd, slugPre }) => {
    const router = useRouter();
    const dispatch = useDispatch();
 
@@ -26,7 +26,11 @@ const MoviesHome = ({ data, titleEnd }) => {
             {data && (
                <MoviesGrid>
                   {data.map((movie) => (
-                     <MovieCard key={movie.id} movie={movie} />
+                     <MovieCard
+                        key={movie.id}
+                        movie={movie}
+                        slugPre={slugPre}
+                     />
                   ))}
                </MoviesGrid>
             )}

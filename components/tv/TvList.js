@@ -32,7 +32,7 @@ const TvList = ({ data }) => {
             ) : (
                <TvGrid>
                   {data.map((movie) => (
-                     <TvCard key={movie.id} movie={movie} />
+                     <TvCard key={movie.id} movie={movie} slugPre='tv' />
                   ))}
                </TvGrid>
             )}

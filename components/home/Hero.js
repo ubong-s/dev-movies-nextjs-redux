@@ -100,7 +100,7 @@ const Hero = ({ slides = [] }) => {
                            <Image
                               src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                               alt={title}
-                              height={600}
+                              height={650}
                               width={400}
                               layout='responsive'
                               // className='img mobile'
@@ -108,7 +108,7 @@ const Hero = ({ slides = [] }) => {
                         </div>
                         <div className='slide-img-info'>
                            <h1>{slide.title}</h1>
-                           <p>{slide.overview}</p>
+                           <p>{slide.overview.substring(0, 200)}...</p>
                            <Button
                               title='Find out More'
                               linkText={`/movies/${id}-${formatSlug(title)}`}
@@ -131,9 +131,9 @@ const HeroSlider = styled.section`
    height: calc(100vh - ${dimensions.headerHeight.mobile});
    overflow: hidden;
 
-   @media screen and (min-width: ${breakpoints.tablet}px) {
+   /* @media screen and (min-width: ${breakpoints.tablet}px) {
       height: 80vh;
-   }
+   } */
    @media screen and (min-width: ${breakpoints.desktop}px) {
       height: 100vh;
    }
@@ -152,7 +152,7 @@ const HeroSlider = styled.section`
 
          img {
             object-fit: cover;
-            object-position: center;
+            object-position: top;
          }
 
          &.desktop {
@@ -241,7 +241,7 @@ const SliderIcons = styled.div`
    align-items: flex-end;
    font-size: 1.5rem;
    left: 50%;
-   bottom: 10%;
+   bottom: 7.5%;
    transform: translateX(-50%);
    z-index: 4;
    color: ${(props) => props.theme.text};
