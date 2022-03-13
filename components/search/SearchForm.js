@@ -58,8 +58,9 @@ const SearchFormWrap = styled.form`
     width: 100%;
     padding: 1rem;
     outline: none;
-    border: none;
+    border: 2px solid ${(props) => props.theme.neutral};
     font-family: ${variables.fonts.secondary};
+    border-top: none;
 
     &:focus {
       border: 1px solid ${(props) => props.theme.accent};
