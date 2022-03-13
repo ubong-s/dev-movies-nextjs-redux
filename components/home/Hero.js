@@ -53,7 +53,7 @@ const Hero = ({ slides = [] }) => {
             <span>
                {Array.from(Array(length).keys()).map((i) => {
                   return (
-                     <p key={i} className={i === current && 'active'}>
+                     <p key={i} className={i === current ? 'active' : ''}>
                         {i + 1}
                      </p>
                   );
