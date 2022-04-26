@@ -1,34 +1,28 @@
+# DevMovies Website
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## How I worked on this project
 
-First, run the development server:
+-  I built this app based on design inspiration with some variations
+   ![Design Inspiration](./design_inspiration/design-inspiration.jpg)
+-  I fetched movies using the [The Movie Database (TMDB)](https://www.themoviedb.org/) API
+-
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## How to navigate this project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-  State management with Redux Toolkit [Example Code 1](https://github.com/ubong-s/dev-movies-nextjs-redux/blob/main/redux/store.js) [Example Code 2](https://github.com/ubong-s/dev-movies-nextjs-redux/tree/main/features)
+-  Responsive CSS using styled-components [Example Code](https://github.com/ubong-s/dev-movies-nextjs-redux/blob/main/styles/globalStyle.js)
+-  This application fetches data from the [The Movie Database (TMDB)](https://developers.themoviedb.org/3/getting-started/introduction) API
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Why I built the project this way
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+-  I used Redux for state management initially to improve my redux skills, then found out about Redux Toolkit and refactored my code to it
+-  styled-components is a great library for styling. No class name bugs, easier deletion of CSS, simple dynamic styling and painless maintenance.What's not to love!!
+-  I had to use an existing API because I can't create one of my own yet. I'm strictly on Frontend development but being a Fullstack developer is the goal.
+-  Single Movie page data is fetched using the [Next.js](https://nextjs.org/) using `getServerSideProps`
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Improvements that can be made
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-  Incorporate a testing library
+-  Refactor the code to make it cleaner
