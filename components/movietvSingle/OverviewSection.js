@@ -163,7 +163,6 @@ const OverviewInner = styled.div`
 
    .desktop-movie-img {
       height: 100%;
-      background: red;
       object-fit: cover;
 
       > div {
