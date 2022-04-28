@@ -171,7 +171,6 @@ const OverviewInner = styled.div`
 
       img {
          height: 100%;
-         background-color: red;
       }
    }
 
