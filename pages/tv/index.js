@@ -8,7 +8,6 @@ import { fetchShows } from '../../features/tv/tvSlice';
 const Tv = () => {
    const dispatch = useDispatch();
    const { shows, showsQuery: query } = useSelector((state) => state.tv);
-
    const [page, setPage] = useState(1);
 
    useEffect(() => {
