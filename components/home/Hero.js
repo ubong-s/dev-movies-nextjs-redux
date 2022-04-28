@@ -198,7 +198,7 @@ const HeroSlider = styled.section`
             left: 5%;
             top: unset;
             bottom: 20%;
-            width: 50%;
+            width: 60%;
             text-align: left;
             padding: unset;
             padding-right: 2rem;

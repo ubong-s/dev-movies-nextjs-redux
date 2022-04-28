@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
    query: 'popular',
@@ -7,6 +7,18 @@ const initialState = {
    error: null,
 };
 
+export const fetchMovies = createAsyncThunk(
+   'movies/fetchMovies',
+   async (query = 'popular', page = 1) => {
+      const response = await fetch(
+         `https://api.themoviedb.org/3/movie/${query}?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&language=en-US&page=${page}`
+      );
+      const result = await response.json();
+
+      return result;
+   }
+);
+
 export const moviesSlice = createSlice({
    name: 'movies',
    initialState,
@@ -14,33 +26,29 @@ export const moviesSlice = createSlice({
       updateQuery: (state, action) => {
          state.query = action.payload;
       },
-      fetchMoviesStart: (state) => {
-         state.loading = true;
-      },
-      fetchMoviesSuccess: (state, action) => {
-         state.loading = false;
-         state.movies = action.payload;
-      },
-      fetchMoviesError: (state, action) => {
-         state.error = action.payload;
-      },
+   },
+
+   extraReducers(builder) {
+      builder
+         .addCase(fetchMovies.pending, (state) => {
+            state.loading = true;
+         })
+         .addCase(fetchMovies.fulfilled, (state, action) => {
+            state.loading = false;
+
+            if (action.payload.results) {
+               state.movies = action.payload;
+            } else {
+               state.error = `Error fetching ${state.query} movies`;
+            }
+         })
+         .addCase(fetchMovies.rejected, (state) => {
+            state.error = `Error fetching ${state.query} movies`;
+         });
    },
 });
 
 // Action creators are generated for each case reducer function
-export const {
-   fetchMoviesStart,
-   fetchMoviesSuccess,
-   fetchMoviesError,
-   updateQuery,
-} = moviesSlice.actions;
-
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.user.value)`
-export const selectQuery = (state) => state.movies.query;
-export const selectLoading = (state) => state.movies.loading;
-export const selectMovies = (state) => state.movies.movies;
-export const selectError = (state) => state.movies.error;
+export const { updateQuery } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

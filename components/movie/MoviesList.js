@@ -9,17 +9,10 @@ import {
 } from '..';
 import { breakpoints } from '../../styles/globalStyle';
 import { useSelector } from 'react-redux';
-import {
-   selectLoading,
-   selectError,
-   selectQuery,
-} from '../../features/movies/moviesSlice';
 import { formatQuery } from '../../utils/helpers';
 
-const MoviesList = ({ data, headingTitle }) => {
-   const loading = useSelector(selectLoading);
-   const error = useSelector(selectError);
-   const query = useSelector(selectQuery);
+const MoviesList = ({ data = [], headingTitle }) => {
+   const { loading, error, query } = useSelector((state) => state.movies);
 
    return (
       <MoviesRoot>
@@ -39,7 +32,7 @@ const MoviesList = ({ data, headingTitle }) => {
             ) : (
                <MoviesGrid>
                   {data.map((movie) => (
-                     <MovieCard key={movie.id} movie={movie} slugPre='movies'/>
+                     <MovieCard key={movie.id} movie={movie} slugPre='movies' />
                   ))}
                </MoviesGrid>
             )}

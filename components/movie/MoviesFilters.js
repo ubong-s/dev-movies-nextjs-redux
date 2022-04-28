@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { breakpoints, variables } from '../../styles/globalStyle';
-import { selectQuery, updateQuery } from '../../features/movies/moviesSlice';
+import { updateQuery } from '../../features/movies/moviesSlice';
 
 const filters = [
    {
@@ -30,7 +30,7 @@ const filters = [
 
 const MoviesFilters = () => {
    const dispatch = useDispatch();
-   const query = useSelector(selectQuery);
+   const { query } = useSelector((state) => state.movies);
 
    return (
       <MoviesFiltersRoot>

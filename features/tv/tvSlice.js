@@ -1,46 +1,55 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  showsQuery: 'popular',
-  showsLoading: false,
-  shows: [],
-  showsError: null,
-}
+   showsQuery: 'popular',
+   showsLoading: false,
+   shows: [],
+   showsError: null,
+};
+
+export const fetchShows = createAsyncThunk(
+   'tv/fetchShows',
+   async (query = 'popular', page = 1) => {
+      const response = await fetch(
+         `https://api.themoviedb.org/3/tv/${query}?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&language=en-US&page=${page}`
+      );
+
+      const result = await response.json();
+
+      return result;
+   }
+);
 
 export const tvSlice = createSlice({
-  name: 'tv',
-  initialState,
-  reducers: {
-    updateShowsQuery: (state, action) => {
-      state.showsQuery = action.payload
-    },
-    fetchShowsStart: (state) => {
-      state.showsLoading = true
-    },
-    fetchShowsSuccess: (state, action) => {
-      state.showsLoading = false
-      state.shows = action.payload
-    },
-    fetchShowsError: (state, action) => {
-      state.showsError = action.payload
-    },
-  },
-})
+   name: 'tv',
+   initialState,
+   reducers: {
+      updateShowsQuery: (state, action) => {
+         state.showsQuery = action.payload;
+      },
+   },
+
+   extraReducers(builder) {
+      builder
+         .addCase(fetchShows.pending, (state) => {
+            state.showsLoading = true;
+         })
+         .addCase(fetchShows.fulfilled, (state, action) => {
+            state.showsLoading = false;
+
+            if (action.payload.results) {
+               state.shows = action.payload;
+            } else {
+               state.showsError = `Error fetching ${state.showsQuery} shows`;
+            }
+         })
+         .addCase(fetchShows.rejected, (state, action) => {
+            state.showsError = `Error fetching ${showQuery} shows`;
+         });
+   },
+});
 
 // Action creators are generated for each case reducer function
-export const {
-  fetchShowsStart,
-  fetchShowsSuccess,
-  fetchShowsError,
-  updateShowsQuery,
-} = tvSlice.actions
+export const { updateShowsQuery } = tvSlice.actions;
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.user.value)`
-export const selectShowsQuery = (state) => state.tv.showsQuery
-export const selectShowsLoading = (state) => state.tv.showsLoading
-export const selectShows = (state) => state.tv.shows
-export const selectShowsError = (state) => state.tv.showsError
-
-export default tvSlice.reducer
+export default tvSlice.reducer;
