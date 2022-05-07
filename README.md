@@ -6,9 +6,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## How I worked on this project
 
--  I built this app based on design inspiration with some variations
+### Design
 
-![Design Inspiration](./design_inspiration/design-inspiration.jpg)
+![Design Inspiration](./design/preview.jpg)
 
 ## How to navigate this project
 
